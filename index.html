@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAB 1: Bilangan 1 sampai 10</title>
+    <style>
+        /* --- CSS RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #eef5f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        /* --- CONTAINER HALAMAN ELEKTRONIK (MIRIP PDF/SLIDE) --- */
+        .pdf-page {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #dbe3eb;
+            position: relative;
+        }
+
+        /* --- HEADER & COVER HALAMAN --- */
+        .page-header-cover {
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .page-header-cover h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-header-cover p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* --- AREA KONTEN --- */
+        .content-padding {
+            padding: 30px;
+        }
+
+        /* --- MENU UTAMA (HALAMAN OLAHAN MENU) --- */
+        .menu-container {
+            background-color: #eceff1;
+            border-radius: 16px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid #cfd8dc;
+        }
+
+        .menu-title {
+            background-color: #1e88e5;
+            color: white;
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .menu-btn {
+            padding: 14px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-orange { background: linear-gradient(to bottom, #ffb74d, #f57c00); }
+        .btn-green  { background: linear-gradient(to bottom, #81c784, #388e3c); }
+        .btn-red    { background: linear-gradient(to bottom, #e57373, #d32f2f); }
+        .btn-blue   { background: linear-gradient(to bottom, #4fc3f7, #0288d1); }
+
+        /* --- TUJUAN PEMBELAJARAN --- */
+        .tujuan-box {
+            background-color: #f1f8e9;
+            border-left: 6px solid #7cb342;
+            padding: 20px;
+            border-radius: 4px 8px 8px 4px;
+            margin: 20px 0;
+        }
+
+        .tujuan-box h3 {
+            color: #33691e;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .tujuan-box ul {
+            list-style-type: none;
+        }
+
+        .tujuan-box ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .tujuan-box ul li::before {
+            content: "•";
+            color: #7cb342;
+            font-weight: bold;
+            font-size: 1.4rem;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+
+        /* --- VISUALISASI ASET GAMBAR/PNG --- */
+        .asset-wrapper {
+            background-color: #fafafa;
+            border: 1px dashed #b0bec5;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .asset-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .asset-caption {
+            font-size: 0.9rem;
+            color: #607d8b;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* --- BAGIAN INTERAKTIF & LATIHAN --- */
+        .section-title {
+            color: #007c91;
+            border-bottom: 2px solid #00acc1;
+            padding-bottom: 5px;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .interactive-box {
+            background: #fffde7;
+            border: 2px solid #fff176;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .btn-check {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-check:hover { background-color: #43a047; }
+
+        .feedback-label {
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        /* --- FORMULA / MATEMATIKA --- */
+        .math-box {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #c2185b;
+            background-color: #fce4ec;
+            padding: 5px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        /* --- SOAL KUIS (A, B, C OPTION) --- */
+        .quiz-card {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .options-group {
+            margin-top: 12px;
+        }
+
+        .option-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-item input {
+            margin-right: 10px;
+        }
+
+        /* --- FOOTER HALAMAN --- */
+        .page-footer {
+            background-color: #f5f5f5;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.85rem;
+            color: #757575;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENT --- */
+        @media (max-width: 600px) {
+            .menu-grid { grid-template-columns: 1fr; }
+            .content-padding { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pdf-page">
+        <div class="page-header-cover">
+            <h1>BAB - 1</h1>
+            <p>Bilangan 1 sampai 10</p>
+        </div>
+        
+        <div class="content-padding">
+            <div class="tujuan-box">
+                <h3>A. Tujuan Pembelajaran</h3>
+                <p>Setelah belajar hari ini, kita akan bisa:</p>
+                <ul>
+                    <li>Menghitung benda 1 sampai 10.</li>
+                    <li>Menulis lambang bilangan.</li>
+                    <li>Membandingkan banyak benda.</li>
+                    <li>Mengurutkan bilangan.</li>
+                    <li>Mengurai dan menyusun bilangan.</li>
+                </ul>
+            </div>
+
+            <div class="asset-wrapper">
+                <img src="abacus.png" alt="Sempoa Bilangan" class="asset-image">
+                <div class="asset-caption">[Aset Grafis: Belajar Berhitung]</div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Matematika Kelas 1</span>
+            <span>Halaman 1-2</span>
+        </div>
+    </div>
+
+
+    <div class="pdf-page">
+        <div class="content-padding" style="text-align: center;">
+            <div class="menu-container">
+                <div class="menu-title">MENU INTERAKTIF</div>
+                <div class="menu-grid">
+                    <div class="menu-btn btn-orange">Telaah 1</div>
+                    <div class="menu-btn btn-orange">Telaah 2</div>
+                    <div class="menu-btn btn-green">Menghitung 1-5</div>
+                    <div class="menu-btn btn-red">Membandingkan</div>
+                    <div class="menu-btn btn-green">Menghitung 6-10</div>
+                    <div class="menu-btn btn-blue">Mengurutkan</div>
+                    <div class="menu-btn btn-red">Mengenal angka 0</div>
+                    <div class="menu-btn btn-blue">Mengurai Bilangan</div>
+                    <div class="menu-btn btn-orange">Kuis Interaktif</div>
+                    <div class="menu-btn btn-orange">Menyusun Bilangan</div>
+                </div>
+            </div>
+
+            <div class="asset-wrapper">
+                <img src="menu_background.png" alt="Latar Belakang Menu" class="asset-image">
+                <div class="asset-caption">[Aset Grafis: Background Taman & Pagar Belajar]</div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Matematika Kelas 1</span>
+            <span>Halaman 3</span>
+        </div>
+    </div>
+
+
+    <div class="pdf-page">
+        <div class="content-padding">
+            <h2 class="section-title">Mencari, Menghitung, dan Mencatat!</h2>
+            <p style="margin-bottom: 15px; font-weight: 500;">Ayo belajar sambil bermain di sekitar kita! Amati objek berikut:</p>
+            
+            <div style="margin-left: 20px; line-height: 1.8;">
+                • Bunga <br>
+                • Batu <br>
+                • Semut <br>
+                • Ranting kayu <br>
+                • Pohon
+            </div>
+
+            <h2 class="section-title">Membandingkan & Mengurutkan Bilangan</h2>
+            <p><strong>Kecil ke Besar:</strong> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>
+            <p><strong>Besar ke Kecil:</strong> 10, 9, 8, 7, 6, 5, 4, 3, 2, 1</p>
+            
+            <div class="interactive-box">
+                <p><strong>Contoh Kasus:</strong> Jumlah pensil lebih sedikit dari penghapus (<span class="math-box">&lt;</span>)</p>
+            </div>
+
+            <div class="asset-wrapper">
+                <img src="comparison_pencils.png" alt="Perbandingan Benda" class="asset-image">
+                <div class="asset-caption">[Aset Grafis: Gambar Pensil + Komparasi Benda]</div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Matematika Kelas 1</span>
+            <span>Halaman 4-5</span>
+        </div>
+    </div>
+
+
+    <div class="pdf-page">
+        <div class="content-padding">
+            <h2 class="section-title">Mengurai dan Menyusun Bilangan</h2>
+            <p style="margin-bottom: 15px;">7 pensil diuraikan menjadi 2 kelompok:</p>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <div class="math-box">1 + 6 = 7</div> &nbsp;&nbsp;
+                <div class="math-box">2 + 5 = 7</div> &nbsp;&nbsp;
+                <div class="math-box">3 + 4 = 7</div>
+            </div>
+
+            <div class="interactive-box" style="background-color: #f1f8e9; border-color: #c5e1a5;">
+                <p><strong>Ayo Menghitung 1-5 dan 6-10!</strong> Coba lihat gambar-gambar aset di bawah ini, lalu mari kita hitung bersama objek alam sekitar.</p>
+            </div>
+
+            <div class="asset-wrapper">
+                <img src="counting_objects.png" alt="Ayo Menghitung Objek" class="asset-image">
+                <div class="asset-caption">[Aset Grafis: Objek Kupu-kupu, Bunga, Kumbang]</div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Matematika Kelas 1</span>
+            <span>Halaman 6-7</span>
+        </div>
+    </div>
+
+
+    <div class="pdf-page">
+        <div class="content-padding">
+            <h2 class="section-title">Angka Nol (0) Artinya Tidak Ada</h2>
+            <p style="margin-bottom: 15px;">Perhatikan perbedaan isi keranjang berikut:</p>
+            
+            <div style="display: flex; justify-content: space-around; margin: 15px 0; flex-wrap: wrap;">
+                <div style="padding: 10px; background: #fafafa; border: 1px solid #ddd; border-radius: 5px; min-width: 150px; text-align: center; margin: 5px;">
+                    <strong>Keranjang Danu</strong><br>4 Apel
+                </div>
+                <div style="padding: 10px; background: #fafafa; border: 1px solid #ddd; border-radius: 5px; min-width: 150px; text-align: center; margin: 5px;">
+                    <strong>Keranjang Nina</strong><br>0 Apel (Kosong)
+                </div>
+            </div>
+
+            <h2 class="section-title">Membandingkan Banyak Benda</h2>
+            <p>Hitung dan bandingkan benda di bawah ini! Tentukan mana yang lebih banyak atau lebih sedikit.</p>
+
+            <div class="asset-wrapper">
+                <img src="fruits_comparison.png" alt="Perbandingan Stroberi dan Nanas" class="asset-image">
+                <div class="asset-caption">[Aset Grafis: Stroberi vs Nanas / Sepatu vs Kaos Kaki]</div>
+            </div>
+        </div>
+
+        <div class="page-theme-footer page-footer">
+            <span>Matematika Kelas 1</span>
+            <span>Halaman 8-9</span>
+        </div>
+    </div>
+
+
+    <div class="pdf-page">
+        <div class="content-padding">
+            <h2 class="section-title" style="color: #d32f2f; border-color: #f44336;">Waktunya Kita Uji Kemampuanmu!</h2>
+            <p style="margin-bottom: 20px;">Pilihlah salah satu jawaban yang paling tepat!</p>
+
+            <div class="quiz-card">
+                <p><strong>1. Berapa jumlah kelereng di bawah ini?</strong></p>
+                <div style="margin: 10px 0; font-weight: bold; color: #555;">[Aset Gambar: Kelereng]</div>
+                <div class="options-group">
+                    <label class="option-item"><input type="radio" name="q1" value="A"> A. 6</label>
+                    <label class="option-item"><input type="radio" name="q1" value="B"> B. 7</label>
+                    <label class="option-item"><input type="radio" name="q1" value="C"> C. 8</label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q1', 'B', 'ans1')">Periksa</button>
+                <div id="ans1" class="feedback-label"></div>
+            </div>
+
+            <div class="quiz-card">
+                <p><strong>2. Berapa jumlah pensil warna kuning?</strong></p>
+                <div style="margin: 10px 0; font-weight: bold; color: #555;">[Aset Gambar: Pensil Warna]</div>
+                <div class="options-group">
+                    <label class="option-item"><input type="radio" name="q2" value="A"> A. 5</label>
+                    <label class="option-item"><input type="radio" name="q2" value="B"> B. 6</label>
+                    <label class="option-item"><input type="radio" name="q2" value="C"> C. 7</label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q2', 'A', 'ans2')">Periksa</button>
+                <div id="ans2" class="feedback-label"></div>
+            </div>
+
+            <div class="quiz-card">
+                <p><strong>3. Urutkan bilangan berikut dari yang terkecil! [5, 8, 3, 6, 4, 7]</strong></p>
+                <div class="options-group">
+                    <label class="option-item"><input type="radio" name="q3" value="A"> A. 3, 4, 5, 6, 7, 8</label>
+                    <label class="option-item"><input type="radio" name="q3" value="B"> B. 8, 7, 6, 5, 4, 3</label>
+                    <label class="option-item"><input type="radio" name="q3" value="C"> C. 4, 3, 5, 6, 7, 8</label>
+                </div>
+                <button class="btn-check" onclick="checkAnswer('q3', 'A', 'ans3')">Periksa</button>
+                <div id="ans3" class="feedback-label"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px; font-weight: bold; color: #2e7d32; font-size: 1.4rem;">
+                🎉 ALHAMDULILLAH 🎉
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Matematika Kelas 1</span>
+            <span>Halaman 10</span>
+        </div>
+    </div>
+
+    <script>
+        function checkAnswer(quizName, correctAnswer, resultId) {
+            const options = document.getElementsByName(quizName);
+            let selectedValue = "";
+            for (const option of options) {
+                if (option.checked) {
+                    selectedValue = option.value;
+                    break;
+                }
+            }
+            
+            const resultElement = document.getElementById(resultId);
+            if (selectedValue === "") {
+                resultElement.textContent = "Silakan pilih salah satu jawaban terlebih dahulu!";
+                resultElement.style.color = "#d32f2f";
+            } else if (selectedValue === correctAnswer) {
+                resultElement.textContent = "✔ BENAR";
+                resultElement.style.color = "#2e7d32";
+            } else {
+                resultElement.textContent = "❌ SALAH, coba lagi!";
+                resultElement.style.color = "#c62828";
+            }
+        }
+    </script>
+</body>
+</html>
